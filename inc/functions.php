@@ -243,6 +243,10 @@ function formatUserField($userfield) {
 	echo '<td class="record_col userfield">'.$userfield.'</td>' . PHP_EOL;
 }
 
+function formatTDEXFER($tdexfer) {
+	echo '<td class="record_col tdexfer">'.$tdexfer.'</td>' . PHP_EOL;
+}
+
 function formatAccountCode($accountcode) {
 	echo '<td class="record_col"><abbr data-clipboard data-clipboard-text="'.$accountcode.'">'.$accountcode.'</abbr></td>' . PHP_EOL;
 }
