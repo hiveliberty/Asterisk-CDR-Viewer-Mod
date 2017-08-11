@@ -86,6 +86,9 @@ $mod_vars['dst'][] = empty($_REQUEST['dst_neg']) ? null : $_REQUEST['dst_neg'];
 $mod_vars['did'][] = $did_number;
 $mod_vars['did'][] = empty($_REQUEST['did_mod']) ? null : $_REQUEST['did_mod'];
 $mod_vars['did'][] = empty($_REQUEST['did_neg']) ? null : $_REQUEST['did_neg'];
+$mod_vars['tdexfer'][] = is_blank($_REQUEST['tdexfer']) ? null : $_REQUEST['tdexfer'];
+$mod_vars['tdexfer'][] = empty($_REQUEST['tdexfer_mod']) ? null : $_REQUEST['tdexfer_mod'];
+$mod_vars['tdexfer'][] = empty($_REQUEST['tdexfer_neg']) ? null : $_REQUEST['tdexfer_neg'];
 $mod_vars['userfield'][] = is_blank($_REQUEST['userfield']) ? null : $_REQUEST['userfield'];
 $mod_vars['userfield'][] = empty($_REQUEST['userfield_mod']) ? null : $_REQUEST['userfield_mod'];
 $mod_vars['userfield'][] = empty($_REQUEST['userfield_neg']) ? null : $_REQUEST['userfield_neg'];
@@ -177,7 +180,7 @@ if ( $search_condition == '' ) {
 	}
 }
 
-$where = "$channel $src $clid $did $dstchannel $dst $userfield $accountcode $disposition";
+$where = "$channel $src $clid $did $tdexfer $dstchannel $dst $userfield $accountcode $disposition";
 
 if ( isset($_REQUEST['lastapp_neg']) && $_REQUEST['lastapp_neg'] == 'true' ) {
 	$lastapp = (empty($_REQUEST['lastapp']) || $_REQUEST['lastapp'] == 'all') ? null : "lastapp != '$_REQUEST[lastapp]'";
@@ -407,6 +410,9 @@ if ( isset($_REQUEST['need_html']) && $_REQUEST['need_html'] == 'true' ) {
 							echo '<th class="record_col">Направление</th>';
 						}
 					}
+					if ( Config::exists('display.column.tdexfer') && Config::get('display.column.tdexfer') == 1 ) {
+						echo '<th class="record_col">Маршрут Panasonic</th>';
+					}
 					if ( Config::exists('display.column.lastapp') && Config::get('display.column.lastapp') == 1 ) {
 						echo '<th class="record_col">Приложение</th>';
 					}
@@ -455,6 +461,9 @@ if ( isset($_REQUEST['need_html']) && $_REQUEST['need_html'] == 'true' ) {
 					if ( Config::exists('display.column.callrates_dst') && Config::get('display.column.callrates_dst') == 1 ) {
 						echo '<td>'. htmlspecialchars($rates[2]) . '</td>';
 					}
+				}
+				if ( Config::exists('display.column.tdexfer') && Config::get('display.column.tdexfer') == 1 ) {
+					formatTDEXFER($row['tdexfer']);
 				}
 				if ( Config::exists('display.column.lastapp') && Config::get('display.column.lastapp') == 1 ) {
 					formatApp($row['lastapp'], $row['lastdata']);
@@ -526,6 +535,9 @@ switch ($group) {
 	break;
 	case "clid":
 		$graph_col_title = 'CallerID';
+	break;
+	case "tdexfer":
+		$graph_col_title = 'Маршрут Panasonic';
 	break;
 	case "userfield":
 		$graph_col_title = 'Польз. поле';
