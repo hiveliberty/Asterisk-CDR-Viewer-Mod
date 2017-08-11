@@ -148,6 +148,8 @@ return array(
 			'src' => 1,
 			## Куда звонили
 			'dst' => 1,
+			## Перевод на стороне TDE
+			'tdexfer' => 1,
 			## Статус звонка
 			'disposition' => 1,
 			## Длительность
@@ -200,7 +202,9 @@ return array(
 			## Файл
 			'file' => 1,			
 			## Комментарий (userfield)
-			'userfield' => 1,			
+			'userfield' => 1,
+			## Перевод на стороне TDE (tdexfer)
+			'tdexfer' => 1,
 		),
 	),
 
