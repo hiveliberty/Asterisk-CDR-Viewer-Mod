@@ -288,6 +288,22 @@ foreach ($months as $i => $month) {
 </tr>
 <?php } ?>
 
+<?php if ( Config::get('display.search.tdexfer') == (1||2) ) { ?>
+<tr class="<?php if ( Config::get('display.search.tdexfer') == 2 ) { echo 'spoilers'; } ?>">
+	<td>
+		<input type="radio" id="id_order_tdexfer" name="order" value="tdexfer">&nbsp;<label for="id_order_tdexfer">Внутр. абон. Panasonic</label>
+	</td>
+	<td>
+		<input class="margin-left0" type="text" name="tdexfer" id="tdexfer">
+		<input type="checkbox" name="tdexfer_neg" value="true" id="id_tdexfer_neg"> <label for="id_tdexfer_neg">Не</label> &ensp;
+		<input checked="checked" type="radio" name="tdexfer_mod" value="begins_with" id="id_tdexfer_mod1"> <label for="id_tdexfer_mod1">Начинается с</label> &ensp;
+		<input type="radio" name="tdexfer_mod" value="contains" id="id_tdexfer_mod2"> <label for="id_tdexfer_mod2">Содержит</label> &ensp; 
+		<input type="radio" name="tdexfer_mod" value="ends_with" id="id_tdexfer_mod3"> <label for="id_tdexfer_mod3">Заканчивается на</label> &ensp;
+		<input type="radio" name="tdexfer_mod" value="exact" id="id_tdexfer_mod4"> <label for="id_tdexfer_mod4">Равно</label> 
+	</td>
+</tr>
+<?php } ?>
+
 <?php if ( Config::get('display.search.did') == (1||2) ) { ?>
 <tr class="<?php if ( Config::get('display.search.did') == 2 ) { echo 'spoilers'; } ?>">
 	<td>
