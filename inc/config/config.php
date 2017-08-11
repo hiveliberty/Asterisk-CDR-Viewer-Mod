@@ -149,7 +149,7 @@ return array(
 			## Куда звонили
 			'dst' => 1,
 			## Перевод на стороне TDE
-			'tdexfer' => 1,
+			'tdexfer' => 0,
 			## Статус звонка
 			'disposition' => 1,
 			## Длительность
@@ -204,7 +204,7 @@ return array(
 			## Комментарий (userfield)
 			'userfield' => 1,
 			## Перевод на стороне TDE (tdexfer)
-			'tdexfer' => 1,
+			'tdexfer' => 0,
 		),
 	),
 
